@@ -1,1 +1,38 @@
+# Python Virtual Environments
+.venv/
+env/
 venv/
+
+# Byte-compiled / Optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# macOS metadata and junk
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# IDE / Editor directories
+.vscode/
+.idea/
+
+# Log and temporary files
+*.log
+*.tmp
+*.bak
+
+# Build directories and package info
+build/
+dist/
+*.egg-info/
+
+# System Files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
