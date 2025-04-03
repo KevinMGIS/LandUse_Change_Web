@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SWFWMD Land Cover Change Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Optionally include some CSS for styling -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2em;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    a.button {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #007ACC;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-top: 20px;
+    }
+    a.button:hover {
+      background: #005f99;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Land Cover Change in SWFWMD (2011–2023)</h1>
+    <p>Welcome to the SWFWMD Land Cover Change Project. This interactive WebGIS project explores land cover transitions in the Southwest Florida Water Management District over a 12-year period using NLCD data.</p>
+  </header>
+  
+  <section>
+    <h2>Project Overview</h2>
+    <p>This project analyzes changes in land cover between 2011 and 2023, highlighting areas of urban expansion, forest fragmentation, and other significant transitions. Data was processed using QGIS and Python, and the results are presented through an interactive web map.</p>
+    
+    <h3>Key Components:</h3>
+    <ul>
+      <li><strong>Data Sources:</strong> NLCD tiles for 2011 and 2023, a vectorized change layer (GeoJSON), and the SWFWMD boundary.</li>
+      <li><strong>Methodology:</strong> Data was clipped, reprojected, and compared to generate change masks. These masks were vectorized to create interactive overlays.</li>
+      <li><strong>Interactive Map:</strong> Built using Leaflet, allowing users to toggle between layers and explore the data spatially.</li>
+    </ul>
+    
+    <h2>View the Interactive Map</h2>
+    <p>Click the button below to view the interactive map and explore the land cover changes in detail.</p>
+    <a href="map.html" class="button">View Map</a>
+  </section>
+  
+  <footer>
+    <p>&copy; 2025 GISNerd. All rights reserved.</p>
+  </footer>
+</body>
+</html>
