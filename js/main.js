@@ -1,12 +1,6 @@
 // Initialize the map centered on SWFWMD region
 var map = L.map('map').setView([27.9, -82.5], 8);
 
-// Add OpenStreetMap as the base layer
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 19,
-  attribution: '© OpenStreetMap contributors'
-}).addTo(map);
-
 // Define NLCD tile layers using relative paths
 var nlcd2011 = L.tileLayer('tiles/2011/{z}/{x}/{y}.png', {
   maxZoom: 19,
@@ -47,6 +41,9 @@ fetch('data/2011.geojson')
         layer.bindPopup("Change Area");
       }
     }).addTo(map);
+
+    // Bring the change layer to the front
+    changeLayer.bringToFront();
 
     // Add the change layer to the layer control as an overlay
     layerControl.addOverlay(changeLayer, "Change Areas (2011-2023)");
