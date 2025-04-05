@@ -1,34 +1,23 @@
-// Initialize the map centered on SWFWMD region
-var map = L.map('map').setView([27.9, -82.5], 8);
+// Create three separate map instances for the three views
+var map2011 = L.map('map2011').setView([27.9, -82.5], 8);
+var map2023 = L.map('map2023').setView([27.9, -82.5], 8);
+var mapChange = L.map('mapChange').setView([27.9, -82.5], 8);
 
-// Define NLCD tile layers using relative paths
+// Add NLCD tile layers to the respective maps
 var nlcd2011 = L.tileLayer('tiles/2011/{z}/{x}/{y}.png', {
   maxZoom: 19,
   attribution: 'NLCD 2011'
-});
+}).addTo(map2011);
 
 var nlcd2023 = L.tileLayer('tiles/2023/{z}/{x}/{y}.png', {
   maxZoom: 19,
   attribution: 'NLCD 2023'
-});
+}).addTo(map2023);
 
-// Add one NLCD layer by default (e.g., 2023)
-nlcd2023.addTo(map);
-
-// Create an object for base layers to use in the layer control
-var baseLayers = {
-  "NLCD 2011": nlcd2011,
-  "NLCD 2023": nlcd2023
-};
-
-// Initialize layer control without overlays for now
-var layerControl = L.control.layers(baseLayers, {}, { collapsed: false }).addTo(map);
-
-// Load the external GeoJSON change layer asynchronously using fetch
+// For the change map, load the GeoJSON change layer asynchronously and add it to mapChange
 fetch('data/2011.geojson')
   .then(response => response.json())
   .then(geojsonData => {
-    // Create the GeoJSON layer with custom styling
     var changeLayer = L.geoJSON(geojsonData, {
       style: function(feature) {
         return {
@@ -40,12 +29,9 @@ fetch('data/2011.geojson')
       onEachFeature: function(feature, layer) {
         layer.bindPopup("Change Area");
       }
-    }).addTo(map);
+    }).addTo(mapChange);
 
-    // Bring the change layer to the front
+    // Bring the change layer to the front so it is visible above any base imagery
     changeLayer.bringToFront();
-
-    // Add the change layer to the layer control as an overlay
-    layerControl.addOverlay(changeLayer, "Change Areas (2011-2023)");
   })
   .catch(error => console.error('Error loading GeoJSON:', error));

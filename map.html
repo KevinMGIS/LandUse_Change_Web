@@ -10,15 +10,20 @@ layout: none
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <style>
-    /* Ensure the map fills the viewport */
-    #map {
+    /* Style three map containers, each taking one-third of the viewport height */
+    #map2011, #map2023, #mapChange {
       width: 100%;
-      height: 100vh;
+      height: 33vh;
+      margin: 0;
+      padding: 0;
     }
   </style>
 </head>
 <body>
-  <div id="map"></div>
+  <div id="map2011"></div>
+  <div id="map2023"></div>
+  <div id="mapChange"></div>
+  
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <!-- Your custom JavaScript -->
